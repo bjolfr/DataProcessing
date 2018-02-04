@@ -1,0 +1,7 @@
+USE master;
+IF  EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'm_CRM')
+	BEGIN
+		EXEC sp_detach_db [m_CRM];
+		PRINT 'Detached';	
+	END
+;

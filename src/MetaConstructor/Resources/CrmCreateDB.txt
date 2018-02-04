@@ -1,0 +1,13 @@
+USE master;
+
+IF  EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'm_CRM')
+	BEGIN
+		DROP DATABASE [m_CRM];
+		PRINT 'Dropped';
+	END
+
+CREATE DATABASE [m_CRM]
+	ON (NAME = m_CRM,
+	FILENAME = N'{0}\m_CRM.mdf');
+
+PRINT 'Created';
