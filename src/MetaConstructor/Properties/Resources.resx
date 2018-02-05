@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>MetaConstructor</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CircleField" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleField.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircleGold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleGold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircleLime" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleLime.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircleSelected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleSelected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircleViolet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleViolet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircleWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Circle_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Circle-add.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Circle_apply" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Circle-apply.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Circle_arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Circle-arrow.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Circle_fire" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Circle-fire.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Circle_group" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Circle-group.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CrmAttachDb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CrmAttachDb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="CrmCreateDb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CrmCreateDB.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="CrmCreateTables" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\crmcreatetables.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="CrmDeleteDb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CrmDeleteDb.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="CrmDetachDb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CrmDetachDB.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="CrmFillTables" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CrmFillTables.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="Data_Objects" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Data-Objects.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ErrMsgChooseElement" xml:space="preserve">
+    <value>Choose an element!</value>
+  </data>
+  <data name="ErrMsgElementHasLink" xml:space="preserve">
+    <value>Can not delete! Element has a link in the other tables!</value>
+  </data>
+  <data name="frmButtonCancelText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="frmButtonCloseText" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="frmButtonDeleteText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="frmButtonExportText" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="frmButtonLoadText" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="frmButtonNewText" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="frmButtonSaveText" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="frmCatalogText" xml:space="preserve">
+    <value>Catalog</value>
+  </data>
+  <data name="frmClmnHdrPropType" xml:space="preserve">
+    <value>Property</value>
+  </data>
+  <data name="frmClmnHdrPropValue" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="frmCodeText" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="frmDescrText" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="frmFeatureKindText" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="frmFeaturesText" xml:space="preserve">
+    <value>Feature</value>
+  </data>
+  <data name="frmFeatureValueText" xml:space="preserve">
+    <value>Value:</value>
+  </data>
+  <data name="frmObjectText" xml:space="preserve">
+    <value>Object:</value>
+  </data>
+  <data name="frmTipsSelectElement" xml:space="preserve">
+    <value>Select element</value>
+  </data>
+  <data name="frmToolMenuAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="frmToolMenuDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="frmToolMenuEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="HelloString" xml:space="preserve">
+    <value>Def: Hello, World!</value>
+  </data>
+  <data name="InfoMsgDbCreated" xml:space="preserve">
+    <value>Database created successfully!</value>
+  </data>
+  <data name="InfoMsgDbDeleted" xml:space="preserve">
+    <value>Database deleted successfully!</value>
+  </data>
+  <data name="InfoStatusConnOpening" xml:space="preserve">
+    <value>Opening connection ...</value>
+  </data>
+  <data name="InfoStatusDbAttaching" xml:space="preserve">
+    <value>Attaching database...</value>
+  </data>
+  <data name="InfoStatusDbCreated" xml:space="preserve">
+    <value>Database created successfully</value>
+  </data>
+  <data name="InfoStatusDbCreating" xml:space="preserve">
+    <value>Creating database...</value>
+  </data>
+  <data name="InfoStatusDbDeleteing" xml:space="preserve">
+    <value>Deleting database...</value>
+  </data>
+  <data name="InfoStatusDbDetaching" xml:space="preserve">
+    <value>Detaching database...</value>
+  </data>
+  <data name="InfoStatusReady" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="InfoStatusTablesCreating" xml:space="preserve">
+    <value>Creating tables...</value>
+  </data>
+  <data name="InfoStatusTablesFilling" xml:space="preserve">
+    <value>Filling tables...</value>
+  </data>
+  <data name="InfoStatusTablesLoading" xml:space="preserve">
+    <value>Loading table {0}...</value>
+  </data>
+  <data name="MsgWarning" xml:space="preserve">
+    <value>Warning!</value>
+  </data>
+  <data name="QstMsgDelete" xml:space="preserve">
+    <value>Delete {0}?</value>
+  </data>
+  <data name="QstMsgDeleteElement" xml:space="preserve">
+    <value>Delete feature from {0}?</value>
+  </data>
+  <data name="Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Refresh.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InfoMsgDbCanNotCreate" xml:space="preserve">
+    <value>Can not create database!</value>
+  </data>
+  <data name="InfoMsgDbCanNotDelete" xml:space="preserve">
+    <value>Can not delete database!</value>
+  </data>
+  <data name="QstMsgDeleteDB" xml:space="preserve">
+    <value>Delete database?</value>
+  </data>
+  <data name="InfoMsgChangesSaved" xml:space="preserve">
+    <value>Changes have been saved</value>
+  </data>
+</root>

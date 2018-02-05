@@ -1,0 +1,2 @@
+USE master;
+EXEC sp_attach_db @dbname= N'm_CRM', @filename1= N'{0}\m_CRM.mdf';

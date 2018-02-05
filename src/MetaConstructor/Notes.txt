@@ -1,0 +1,158 @@
+﻿http://stackoverflow.com/questions/17003998/simple-listview-data-binding
+connectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=&quot;C:\Documents and Settings\User\My Documents\CRM.mdf&quot;;Integrated Security=True;Connect Timeout=30;User Instance=True"
+http://www.iconarchive.com/show/essential-toolbar-icons-by-fasticon.html
+http://www.iconarchive.com/show/action-circles-icons-by-fasticon.html
+
+1. Общий интерфейс для всех бизнес-объектов (idr, table)
+1.1. Передавать в диалоги и справочники МетаОбъект с заполненными MetaObjectProperty 
+2.V Загрузить в data справочники объектов, sp21, sp22, sp23
+2.1. Оставить открытым соединение на протяжении всей программы
+2.2. Обновлять изменения в справочниках
+3. Вынести алгоритм заполнения TreeView в Lib
+4. Если в справочнике отсутствует иерархия скрыть TreeView
+5. Тип и размер поля (int, nvarchar(N)) указать в параметрах
+6. Создать базу данных на основе главного (шаблоного) сценария
+7. Выгрузить новый сценарий в t-SQL (txt)
+
+8. Выбор елемента в правом списке
+8.1. Двойной щелчок - выбор
+8.2. make link to masterBindingSource in frmCatalogList
+9. Перевод языков
+10. Проверка корректности удаления связанных элементов
+
+                //create an MetaObjectsList in heap
+                System.Collections.Generic.List<MetaObject> listMetaObjects = new System.Collections.Generic.List<MetaObject>();
+                
+                foreach (DataRow rowObj in data.Tables["Objects"].Rows)
+                {
+                    MetaObject MO = new MetaObject();
+                    MO.idr = rowObj.Field<int>("idr");
+                    MO.hid = rowObj.Field<SqlHierarchyId>("hid").ToString();
+                    MO.code = rowObj.Field<string>("code");
+                    MO.descr = rowObj.Field<string>("descr");
+                    System.Collections.Generic.List<MetaObjectProperty> listMetaObjectProperties = new System.Collections.Generic.List<MetaObjectProperty>();
+
+                    foreach (DataRow rowProp in rowObj.GetChildRows(relation_Object_sp21))
+                    {
+                        MetaObjectProperty MOP = new MetaObjectProperty();
+                        MOP.OwnerObject = MO;
+                        MOP.idr = rowProp.Field<int>("idr");
+                        foreach (DataRow rowTypeProp in rowProp.GetChildRows(relation_sp21_sp23))
+                        {
+                            MOP.PropertyType = new MetaObjectProperty.PType();
+                            MOP.PropertyType.idr = rowTypeProp.Field<int>("idr");
+                            MOP.PropertyType.hid = rowTypeProp.Field<SqlHierarchyId>("hid").ToString();
+                            MOP.PropertyType.code = rowTypeProp.Field<string>("code");
+                            MOP.PropertyType.descr = rowTypeProp.Field<string>("descr");
+                        }
+                        foreach (DataRow rowPropVal in rowProp.GetChildRows(relation_sp21_sp22))
+                        {
+                            MOP.PropertyValue = new MetaObjectProperty.PValue();
+                            MOP.PropertyValue.idr = rowPropVal.Field<int>("idr");
+                            MOP.PropertyValue.hid = rowPropVal.Field<SqlHierarchyId>("hid").ToString();
+                            MOP.PropertyValue.code = rowPropVal.Field<string>("code");
+                            MOP.PropertyValue.descr = rowPropVal.Field<string>("descr");
+                            MOP.PropertyValue.strValue = rowPropVal.Field<string>("fld40");
+                        }
+                        listMetaObjectProperties.Add(MOP);
+                    }
+                    MO.MetaObjectProperties = listMetaObjectProperties;
+                    listMetaObjects.Add(MO);
+                }
+
+                //create new table (list of MetaObjectProperties) from existing tables
+                //masterBindingsource.DataSource = list of MetaObjectProperty
+                /*
+                var qMOProperty =
+                    from t1 in data.Tables["Objects"].AsEnumerable()
+                    join t2 in data.Tables["sp21"].AsEnumerable() on t1["idr"] equals t2["fld33"]
+                    join t3 in data.Tables["sp23"].AsEnumerable() on t2["fld34"] equals t3["idr"]
+                    join t4 in data.Tables["sp22"].AsEnumerable() on t2["fld35"] equals t4["idr"]
+                    select new { Idr = t1["idr"], Descr = t1["descr"], 
+                        PTId = t2["fld34"], PT = t3["descr"],
+                        PVId = t2["fld35"], PV = t4["fld40"]};
+                 */
+
+	class CastObjectHelper<T>
+    {
+        private System.Type m_type;
+        private System.Reflection.PropertyInfo[] m_pi;
+        private System.Reflection.FieldInfo[] m_fi;
+
+        public CastObjectHelper()
+        {
+            m_type = typeof(T);
+            m_fi = m_type.GetFields();
+            m_pi = m_type.GetProperties();
+        }
+
+        public System.Data.DataTable CastToDataTable(IEnumerable<T> source, System.Data.DataTable table, string tableName)
+        {
+            IEnumerator<T> e = source.GetEnumerator();
+
+            //Create a table
+            if (table == null) table = new System.Data.DataTable(tableName);
+
+            //Enumerate the source
+            table.BeginLoadData();
+            while (e.MoveNext())
+                table.LoadDataRow(CastObject(table, e.Current), true);
+            table.EndLoadData();
+            return table;
+        }
+
+        private object[] CastObject(System.Data.DataTable table, T instance)
+        {
+            System.Reflection.PropertyInfo[] pi = instance.GetType().GetProperties();
+            Object[] values = new object[pi.Length];
+            foreach (System.Reflection.PropertyInfo p in pi)
+            {
+                System.Data.DataColumn dc = table.Columns.Contains(p.Name) ? table.Columns[p.Name]
+                    : table.Columns.Add(p.Name, p.PropertyType);
+                values[dc.Ordinal] = p.GetValue(instance, null);
+            }
+            return values;
+        }
+    }
+
+	        private static void InsertToSQL(string tableName)
+        {
+            DataRow[] rows = SupportLib.data.Tables[tableName].Select(null, null, DataViewRowState.Added);
+            if (rows.Length == 0) return;
+
+            global::System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(
+                   global::MetaConstructor.Properties.Settings.Default.CRMConnectionString);
+
+            using (conn)
+            {
+                try
+                {
+                    conn.Open();
+                    System.Data.SqlClient.SqlDataAdapter da = new System.Data.SqlClient.SqlDataAdapter();
+                    using (System.Data.SqlClient.SqlTransaction tran = conn.BeginTransaction())
+                    {
+                        System.Data.SqlClient.SqlCommand insertComm = new System.Data.SqlClient.SqlCommand();
+                        StringBuilder str = new StringBuilder(String.Format("INSERT INTO dbo.{0} VALUES ",tableName));
+                        foreach(DataRow r in rows)
+                        {
+                            //here must be used stored proc
+                            str.AppendFormat(@"({0}, CAST('{1}' AS HierarchyId), N'{2}', N'{3}');",
+                                r["idr"], r["hid"], r["code"], r["descr"]);
+                            if (r.ItemArray.Length > 4) //sp22
+                            {
+                                str.Remove(str.Length - 2, 2);
+                                str.AppendFormat(", NULL, NULL, NULL, NULL, N'{0}');", r["descr"]);
+                            }
+                            r.AcceptChanges();
+                        }
+                        insertComm.CommandText = str.ToString();
+                        insertComm.Connection = conn;
+                        insertComm.Transaction = tran;
+                        insertComm.ExecuteNonQuery();
+                        tran.Commit();
+                    }
+                    conn.Close();
+                }
+                catch (System.Data.SqlClient.SqlException ex) {throw new MetaObjectNotFoundException(String.Format("SQL INSERT error {0}", ex));}
+            }
+        }

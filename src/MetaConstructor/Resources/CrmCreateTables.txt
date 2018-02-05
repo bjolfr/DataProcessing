@@ -1,0 +1,57 @@
+USE m_CRM;
+
+--Create table of Objects
+IF OBJECT_ID('dbo.Objects','U') IS NOT NULL
+	DROP TABLE dbo.Objects;
+
+CREATE TABLE dbo.Objects
+(
+	idr 	INT 		NOT NULL,
+	hid 	HierarchyId NOT NULL,
+	code 	nvarchar(9)	NOT NULL,
+	descr	nvarchar(25)NOT NULL,
+	CONSTRAINT PK_Objects
+		PRIMARY KEY (idr)
+);
+
+--Creating catalog sp21 Features
+CREATE TABLE dbo.sp21
+(
+	idr		int			NOT NULL,
+	--hid		HierarchyId NOT NULL,
+	--code	nvarchar(9) NOT NULL,
+	--descr	nvarchar(25),
+	fld32	int			, --TRef19__sp3_Catalog
+	fld33	int			, --RRef20_fld32_CatalogRow
+	fld34	int			, --RRef20_sp23_FeatureKind
+	fld35	int			  --RRef20_sp22_FeatureValue
+	CONSTRAINT PK_sp21
+		PRIMARY KEY (idr)
+);
+
+--Creating catalog sp22 FetauresValues
+CREATE TABLE dbo.sp22
+(
+	idr		int			NOT NULL,
+	hid		HierarchyId NOT NULL,
+	code	nvarchar(9) NOT NULL,
+	descr	nvarchar(25)NOT NULL,
+	fld36	int 				, -- TRef19__sp3
+	fld37	int					, -- RRef20_fld37
+	fld38	bit					, -- fld_L14
+	fld39	decimal(18,3)		, -- fld_N15
+	fld40	nvarchar(100)		, -- fld_S16
+	CONSTRAINT PK_sp22
+		PRIMARY KEY (idr)	
+);
+
+--Creating catalog sp23 FeaturesKind
+CREATE TABLE dbo.sp23
+(
+	idr		int			NOT NULL,
+	hid		HierarchyId NOT NULL,
+	code	nvarchar(9) NOT NULL,
+	descr	nvarchar(25)NOT NULL,
+	CONSTRAINT PK_sp23
+		PRIMARY KEY (idr)	
+);
